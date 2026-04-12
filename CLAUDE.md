@@ -61,6 +61,7 @@ const ORDER_LINK_DELIVERY = "https://forms.gle/宅配表單";
   - [文案] 文字內容修改
 
 ### 安全規範
+- **每次 push 前，必須先確認 .gitignore 是否完整**（檢查有沒有新的敏感檔案需要排除）
 - push 前一定要先告訴我有哪些改動，等我確認才推
 - 嚴禁 force push
 - 推送前檢查是否有機密資料（API key、密碼、表單管理連結）
