@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sep. 久點｜新北甜點工作室</title>
+<title>Sep. Dessert 久點甜點</title>
 <meta name="description" content="Sep. 久點是以抹茶為核心的手作甜點工作室，嚴選丸久小山園抹茶、法芙娜巧克力等頂級食材，不定期開單，期待有機會相遇。">
 <link rel="canonical" href="https://sep-dessert.tw/">
 <link rel="icon" type="image/jpeg" href="images/LOGO.jpg">
@@ -13,18 +13,18 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="Sep. 久點">
 <meta property="og:title" content="Sep. 久點｜新北甜點工作室">
-<meta property="og:description" content="以抹茶為核心的手作甜點工作室，嚴選丸久小山園抹茶、法芙娜巧克力等頂級食材，不定期開單，期待每一次相遇。">
+<meta property="og:description" content="美好的事物，值得滯留久一點。Sep. 久點——以抹茶為核心的手作甜點，不定期限量開單。">
 <!-- 部署後改成 https://你的網域/images/Hero 主視覺.jpg -->
 <meta property="og:image" content="images/Hero%20主視覺.jpg">
 <meta property="og:image:alt" content="Sep. 久點 品牌主視覺">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sep. 久點｜新北甜點工作室">
-<meta name="twitter:description" content="以抹茶為核心的手作甜點工作室，嚴選丸久小山園抹茶、法芙娜巧克力等頂級食材，不定期開單，期待每一次相遇。">
+<meta name="twitter:description" content="美好的事物，值得滯留久一點。Sep. 久點——以抹茶為核心的手作甜點，不定期限量開單。">
 <meta name="twitter:image" content="images/Hero%20主視覺.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+TC:wght@200;300;400&display=swap" rel="stylesheet">
 
 <!--
   Google Analytics 4
@@ -89,36 +89,6 @@ a { color: inherit; text-decoration: none; }
 }
 .brand .dot { color: var(--green); }
 .brand .tc { font-family: var(--serif-tc); margin-left: 6px; }
-.hero-tagline {
-  position: absolute;
-  bottom: 76px;
-  left: 32px;
-  z-index: 3;
-  font-family: var(--serif-tc);
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  color: rgba(244, 242, 238, 0.5);
-  line-height: 1.8;
-}
-.hero-studio {
-  font-family: var(--serif-en);
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  color: rgba(244, 242, 238, 0.85);
-  margin-bottom: 6px;
-}
-.hero-since {
-  font-family: var(--serif-en);
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  color: rgba(244, 242, 238, 0.35);
-  margin-top: 4px;
-}
-@media (max-width: 820px) {
-  .hero-tagline { bottom: 64px; font-size: 11px; }
-}
 
 /* ---------- Order banner ---------- */
 .order-banner {
@@ -311,56 +281,71 @@ body.is-closed .nav-order-btn { display: none; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 75vh;
-  background: var(--black);
+  width: 100%;
+  aspect-ratio: 16 / 5;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url('images/Hero%20主視覺.jpg');
+  background-size: cover;
+  background-position: center 70%;
+  background-repeat: no-repeat;
 }
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 55%;
-  display: block;
-}
-.hero-photo::after {
+.hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.35) 50%,
-    rgba(0, 0, 0, 0.55) 100%
+  background: linear-gradient(
+    105deg,
+    rgba(8,8,6,.65) 0%,
+    rgba(8,8,6,.25) 42%,
+    transparent 62%
   );
   z-index: 1;
+  pointer-events: none;
 }
-.hero-strip {
+.hero-ghost {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 22px 24px;
-  border-top: 1px solid rgba(244, 242, 238, 0.1);
-  background: rgba(26, 26, 24, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font-size: 13px;
-  letter-spacing: 0.15em;
-  color: rgba(244, 242, 238, 0.55);
-  z-index: 3;
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(140px, 28vw, 420px);
+  color: rgba(244, 242, 238, 0.07);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
 }
-
-@media (max-width: 820px) {
-  .hero-strip { font-size: 12px; }
+.hero-text {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(34px, 5.2vw, 76px);
+  color: #F4F2EE;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin: 0 0 0.32em;
+}
+.hero-slogan {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 200;
+  font-size: clamp(9px, 0.88vw, 12px);
+  color: rgba(244, 242, 238, 0.6);
+  letter-spacing: 0.22em;
+  margin: 0;
 }
 
 /* ---------- Section base ---------- */
@@ -479,7 +464,6 @@ section { padding: 120px 0; position: relative; }
   border-radius: 40px;
   background: transparent;
   border: 0.5px solid var(--green);
-  transition: all 0.25s ease;
   cursor: default;
 }
 .ing-tag .ing-origin {
@@ -489,20 +473,13 @@ section { padding: 120px 0; position: relative; }
   color: var(--brown);
   text-transform: uppercase;
   margin-bottom: 4px;
-  transition: color 0.25s ease;
 }
 .ing-tag .ing-name {
   font-family: var(--serif-en);
   font-size: 13px;
   color: var(--black);
   letter-spacing: 0.02em;
-  transition: color 0.25s ease;
 }
-.ing-tag:hover {
-  background: var(--green);
-}
-.ing-tag:hover .ing-origin { color: #9DBDB0; }
-.ing-tag:hover .ing-name { color: var(--bg); }
 
 /* ---------- Products ---------- */
 .products-head {
@@ -523,6 +500,62 @@ section { padding: 120px 0; position: relative; }
   transition: opacity .2s;
 }
 .products-head a:hover { opacity: 0.7; }
+
+/* ---------- Product category tabs ---------- */
+.prod-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 56px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  background: rgba(244, 242, 238, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 0.5px solid rgba(26, 26, 24, 0.06);
+}
+.prod-tabs::-webkit-scrollbar { display: none; }
+body.is-open .prod-tabs { top: 109px; }
+.nav.with-banner ~ * .prod-tabs { top: 109px; }
+.prod-tab {
+  flex-shrink: 0;
+  padding: 8px 20px;
+  font-family: var(--serif-tc);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: transparent;
+  border: 0.5px solid rgba(26, 26, 24, 0.15);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .25s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+}
+.prod-tab:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
+.prod-tab.active {
+  color: var(--bg);
+  background: var(--green);
+  border-color: var(--green);
+}
+@media (max-width: 820px) {
+  .prod-tabs {
+    top: 60px;
+    padding: 12px 0;
+    gap: 6px;
+  }
+  body.is-open .prod-tabs { top: 101px; }
+  .nav.with-banner ~ * .prod-tabs { top: 101px; }
+  .prod-tab { font-size: 13px; padding: 7px 16px; }
+}
 
 .prod-group { padding-bottom: 88px; }
 .prod-group:last-child { padding-bottom: 0; }
@@ -552,7 +585,44 @@ section { padding: 120px 0; position: relative; }
   grid-template-columns: repeat(3, 1fr);
   gap: 56px 36px;
 }
-.prod-card { cursor: default; }
+.prod-card { cursor: default; position: relative; }
+.prod-card.has-detail { cursor: pointer; }
+.prod-card.has-detail .prod-photo::after {
+  content: '+';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(244, 242, 238, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--green);
+  font-family: var(--serif-en);
+  font-size: 22px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .3s ease, transform .3s ease, background .3s ease;
+  pointer-events: none;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+.prod-card.has-detail:hover .prod-photo::after,
+.prod-card.has-detail:focus-visible .prod-photo::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+.prod-card.has-detail:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.prod-detail { display: none; }
 .prod-photo {
   aspect-ratio: 4 / 5;
   background-color: var(--bg3);
@@ -578,18 +648,193 @@ section { padding: 120px 0; position: relative; }
   margin-bottom: 8px;
 }
 .prod-name {
-  font-family: var(--serif-en), var(--serif-tc);
-  font-weight: 400;
-  font-size: 20px;
-  letter-spacing: 0.02em;
+  font-family: var(--serif-tc);
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 0.08em;
   margin-bottom: 8px;
-  color: var(--brown);
+  color: var(--black);
 }
 @media (max-width: 980px) {
   .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 24px; }
 }
 @media (max-width: 560px) {
   .prod-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ---------- Product modal ---------- */
+.prod-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.prod-modal.open { display: flex; }
+.prod-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 24, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.prod-modal.open .prod-modal-overlay { opacity: 1; }
+.prod-modal-card {
+  position: relative;
+  background: var(--bg);
+  max-width: 860px;
+  width: 100%;
+  max-height: 86vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px -20px rgba(26, 26, 24, 0.35);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .35s ease, transform .35s ease;
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  overflow: hidden;
+}
+.prod-modal.open .prod-modal-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.prod-modal-photo {
+  background: var(--bg3);
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
+}
+.prod-modal-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.prod-modal-body {
+  padding: 56px 48px 48px;
+  overflow-y: auto;
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+}
+.prod-modal-category {
+  font-family: var(--serif-en);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.prod-modal-name {
+  font-family: var(--serif-tc);
+  font-weight: 300;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+.prod-modal-desc {
+  font-family: var(--serif-tc);
+  font-size: 15px;
+  line-height: 2;
+  color: var(--brown);
+  margin-bottom: 36px;
+}
+.prod-modal-info {
+  border-top: 0.5px solid rgba(26, 26, 24, 0.12);
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 18px 20px;
+  margin: 0;
+}
+.prod-modal-info dt {
+  font-family: var(--serif-tc);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--green);
+  white-space: nowrap;
+  padding-top: 3px;
+  font-weight: 400;
+}
+.prod-modal-info dd {
+  font-family: var(--serif-tc);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--black);
+  margin: 0;
+}
+.prod-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(244, 242, 238, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(26, 26, 24, 0.1);
+  color: var(--black);
+  font-family: var(--serif-en);
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .25s ease, transform .25s ease;
+  z-index: 2;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+.prod-modal-close:hover {
+  background: var(--bg);
+  transform: rotate(90deg);
+}
+body.modal-open { overflow: hidden; }
+@media (max-width: 820px) {
+  .prod-modal { padding: 0; align-items: stretch; }
+  .prod-modal-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .prod-modal-photo {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+  .prod-modal-body {
+    padding: 32px 24px 40px;
+    max-height: none;
+  }
+  .prod-modal-name { font-size: 24px; margin-bottom: 22px; }
+  .prod-modal-desc { font-size: 14px; margin-bottom: 28px; }
+  .prod-modal-info {
+    grid-template-columns: 76px 1fr;
+    gap: 14px 16px;
+    padding-top: 24px;
+  }
+  .prod-modal-info dt { font-size: 11px; }
+  .prod-modal-info dd { font-size: 13px; line-height: 1.75; }
+}
+@media (max-width: 480px) {
+  .prod-modal-info {
+    grid-template-columns: 1fr;
+    gap: 6px 0;
+  }
+  .prod-modal-info dt { padding-top: 14px; }
+  .prod-modal-info dt:first-of-type { padding-top: 0; }
 }
 
 /* ---------- Reviews ---------- */
@@ -968,7 +1213,22 @@ footer {
   text-align: right;
 }
 .footer-col-follow .footer-follow-hint { text-align: right; }
-.footer-brand { font-size: 28px; color: var(--bg); margin-bottom: 20px; }
+.footer-brand {
+  font-size: 28px;
+  color: var(--bg);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.footer-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 .footer-brand .dot { color: var(--green-light); }
 .footer-tag {
   font-size: 14px;
@@ -1111,7 +1371,8 @@ footer {
   <div class="container nav-inner">
     <a href="#" class="brand">Sep<span class="dot">.</span><span class="tc">久點</span></a>
     <div class="nav-links" id="navLinks">
-      <a href="#story">品牌故事</a>
+      <a href="#">首頁</a>
+      <a href="#story">關於久點</a>
       <a href="#ingredients">嚴選食材</a>
       <a href="#products">品項</a>
       <a href="#order">訂購</a>
@@ -1128,17 +1389,13 @@ footer {
 </nav>
 
 <!-- Hero -->
-<header class="hero">
-  <div class="hero-photo">
-    <img src="images/Hero%20主視覺.jpg" alt="Sep. 久點 品牌主視覺 - 新北抹茶手作甜點工作室" fetchpriority="high">
-  </div>
+<header class="hero" id="hero">
   <h1 class="visually-hidden">Sep. 久點 · 新北抹茶手作甜點工作室 · 提拉盒 · 費南雪 · 軟餅乾 · 夾心司康 · 乳酪奶酥磚</h1>
-  <div class="hero-tagline">
-    <p class="hero-studio">Sep. Dessert  |  久點甜點</p>
-    <p>美好的事物，值得滯留久一點</p>
-    <p class="hero-since">Since 2020</p>
+  <div class="hero-ghost" aria-hidden="true">Sep</div>
+  <div class="hero-text">
+    <p class="hero-title">Sep. Dessert</p>
+    <p class="hero-slogan">美好的事物，值得滯留久一點</p>
   </div>
-  <div class="hero-strip">新北甜點 · 嚴選食材 · 一抹入心</div>
 </header>
 
 <!-- Story -->
@@ -1197,8 +1454,8 @@ footer {
       <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法芙娜巧克力</span></div>
       <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法國馬斯卡邦</span></div>
       <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法國鮮奶油</span></div>
-      <div class="ing-tag"><span class="ing-origin">BELGIUM</span><span class="ing-name">可可巴瑞巧克力</span></div>
-      <div class="ing-tag"><span class="ing-origin">BELGIUM</span><span class="ing-name">貝可拉巧克力</span></div>
+      <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">可可巴瑞巧克力</span></div>
+      <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">貝可拉巧克力</span></div>
     </div>
   </div>
 </section>
@@ -1216,19 +1473,38 @@ footer {
       </div>
       <a href="#order">查看如何訂購 →</a>
     </div>
+    <nav class="prod-tabs" id="prodTabs" aria-label="品項分類"></nav>
     <div class="prod-group fade-in">
       <div class="prod-group-head">
         <div class="prod-group-label">TIRAMISU BOX</div>
         <h3 class="prod-group-title">提拉盒</h3>
       </div>
       <div class="prod-grid">
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 抹脆提拉盒 詳細介紹">
           <div class="prod-photo"><img src="images/抹脆提拉盒.jpg" alt="Sep. 久點 抹脆提拉盒 - 抹茶脆脆與若竹馬斯卡邦奶餡" loading="lazy"></div>
           <div class="prod-name">抹脆提拉盒</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">久點甜度最低的濃抹茶提拉米蘇<br>奶餡使用小山園若竹抹茶製的馬斯卡邦<br>搭配自製抹茶液手指餅乾，上方附抹茶脆脆<br><br>一口三種層次，從脆到綿，茶味從頭貫穿到底。</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>手指餅乾｜抹茶馬斯卡邦奶餡｜抹茶脆脆</dd>
+              <dt>完整原料</dt><dd>自製手指餅乾、法國鮮奶油、日本上白糖、法國馬斯卡邦乳酪、丸久小山園抹茶粉（若竹、龍膽）、抹茶脆脆</dd>
+              <dt>保存方式</dt><dd>冷凍 7 日</dd>
+              <dt>食用方式</dt><dd>食用前一日放冷藏，當天即可食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
-          <div class="prod-photo"><img src="images/濃酒脆球提拉盒.jpg" alt="Sep. 久點 濃酒脆球提拉盒 - 巧克雙脆與香草提拉米蘇" loading="lazy"></div>
-          <div class="prod-name">濃酒脆球提拉盒</div>
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 酒香雙脆提拉盒 詳細介紹">
+          <div class="prod-photo"><img src="images/濃酒脆球提拉盒.jpg" alt="Sep. 久點 酒香雙脆提拉盒 - 咖啡蘭姆酒提拉米蘇與巧克脆球" loading="lazy"></div>
+          <div class="prod-name">酒香雙脆提拉盒</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">不只是提拉米蘇，是加了蘭姆酒的濃酒提拉米蘇<br>手指餅乾使用咖啡蘭姆酒液浸過<br>添加香草籽的酒香奶餡<br><br>從奶餡到餅乾底，酒香環繞<br>喜歡大人感甜點的人應該會喜歡。</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>手指餅乾｜咖啡蘭姆奶餡｜巧克脆球、可可碎粒</dd>
+              <dt>完整原料</dt><dd>自製手指餅乾、咖啡濃縮液、麥斯蘭姆酒、法國馬斯卡邦乳酪、法國鮮奶油、日本上白糖、香草、雞蛋、巧克力脆球、可可脆粒、可可粉</dd>
+              <dt>保存方式</dt><dd>冷凍 7 日</dd>
+              <dt>食用方式</dt><dd>食用前一日放冷藏，當天即可食用</dd>
+            </dl>
+          </div>
         </article>
         <article class="prod-card">
           <div class="prod-photo"><img src="images/巧莓脆皮慕斯杯.jpg" alt="Sep. 久點 巧莓脆皮慕斯杯 - 巧克力與草莓脆皮慕斯" loading="lazy"></div>
@@ -1247,25 +1523,66 @@ footer {
         <h3 class="prod-group-title">軟餅乾</h3>
       </div>
       <div class="prod-grid">
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 濃抹方粒 詳細介紹">
           <div class="prod-photo"><img src="images/濃抹方粒.jpg" alt="Sep. 久點 濃抹方粒 - 抹茶軟餅乾夾抹茶甘納許與抹茶巧克方粒" loading="lazy"></div>
           <div class="prod-name">濃抹方粒</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">久點受歡迎的軟餅乾款<br>用小山園龍膽抹茶做的軟餅乾，擠入若竹抹茶甘納許<br>最上方加了抹茶巧克方粒<br><br>從外層吃到中心都是抹茶，甜度屬於適中<br>是不少顧客會囤貨的品項！</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>抹茶軟餅乾｜抹茶甘納許｜抹茶巧克方粒</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
-          <div class="prod-photo"><img src="images/焙茶甘納許.jpg" alt="Sep. 久點 玄米焙茶軟餅乾 - 焙茶軟餅乾夾焙茶甘納許與玄米粒" loading="lazy"></div>
-          <div class="prod-name">玄米焙茶</div>
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 焙茶甘納許 詳細介紹">
+          <div class="prod-photo"><img src="images/焙茶甘納許.jpg" alt="Sep. 久點 焙茶甘納許 - 焙茶軟餅乾夾焙茶甘納許與玄米粒" loading="lazy"></div>
+          <div class="prod-name">焙茶甘納許</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">焙茶比抹茶溫潤，很耐吃的一款<br>焙茶軟餅乾夾焙茶甘納許，搭配上方的玄米粒<br>咬下去有穀物香，甘甜不膩。</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>焙茶軟餅乾｜焙茶甘納許｜玄米粒</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 重可可碎粒 詳細介紹">
           <div class="prod-photo"><img src="images/重可可碎粒.jpg" alt="Sep. 久點 重可可碎粒 - 重可可軟餅乾夾可可甘納許與可可碎粒" loading="lazy"></div>
           <div class="prod-name">重可可碎粒</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">喜歡苦甜巧克力的人，這款不會讓你失望<br>可可軟餅乾填入可可甘納許，搭配可可碎粒、可可球<br>可可含量高，苦甜控會喜歡的！</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>可可軟餅乾｜可可甘納許｜可可碎粒、可可球</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 海鹽可可 詳細介紹">
           <div class="prod-photo"><img src="images/海鹽可可.jpg" alt="Sep. 久點 海鹽可可 - 可可軟餅乾夾可可甘納許與海鹽" loading="lazy"></div>
           <div class="prod-name">海鹽可可</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">一點海鹽，讓可可的層次更立體<br>可可軟餅乾夾可可甘納許，撒上海鹽<br>不甜膩，吃完嘴裡還有一點鹹香留著。</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>可可軟餅乾｜72% 巧克甘納許｜法國鹽之花</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 紅玉紅茶可可豆 詳細介紹">
           <div class="prod-photo"><img src="images/紅玉紅茶可可豆.jpg" alt="Sep. 久點 紅玉紅茶可可豆 - 紅玉紅茶軟餅乾搭配杏仁果與可可豆" loading="lazy"></div>
           <div class="prod-name">紅玉紅茶可可豆</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">屬於堅果軟餅乾<br>濃郁紅玉紅茶軟餅乾，拌入杏仁果跟可可豆<br>茶香裡帶著濃郁堅果，口感上非常有層次。</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>紅玉紅茶軟餅乾｜杏仁果｜可可豆</dd>
+              <dt>完整原料</dt><dd>中低筋麵粉、無鋁泡打粉、上白糖、無鹽奶油、雞蛋、紅玉紅茶粉、杏仁果、可可豆</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
       </div>
     </div>
@@ -1276,17 +1593,41 @@ footer {
         <h3 class="prod-group-title">常溫甜點</h3>
       </div>
       <div class="prod-grid">
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 抹茶費南雪 詳細介紹">
           <div class="prod-photo"><img src="images/抹茶費南雪.jpg" alt="Sep. 久點 抹茶費南雪 - 丸久小山園抹茶與焦化奶油杏仁粉" loading="lazy"></div>
           <div class="prod-name">抹茶費南雪</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">常溫法式費南雪，使用小山園抹茶製作<br>外殼焦香、內餡濕潤，抹茶味厚實、濃郁</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>抹茶費南雪｜抹茶方粒</dd>
+              <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 貴妃烏龍費南雪 詳細介紹">
           <div class="prod-photo"><img src="images/貴妃烏龍費南雪.jpg" alt="Sep. 久點 貴妃烏龍費南雪 - 烏龍茶粉與焦化奶油杏仁粉" loading="lazy"></div>
           <div class="prod-name">貴妃烏龍費南雪</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">費南雪裡比較特別的一款<br>焦化奶油搭貴妃烏龍茶粉，帶有蜜桃、荔枝的清新香氣</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>貴妃烏龍費南雪｜脆片</dd>
+              <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 可可費南雪 詳細介紹">
           <div class="prod-photo"><img src="images/可可費南雪.jpg" alt="Sep. 久點 可可費南雪 - 可可粉與焦化奶油杏仁粉" loading="lazy"></div>
           <div class="prod-name">可可費南雪</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">法芙娜可可粉製的費南雪<br>外殼焦香、內餡濕潤，上方有巧克力豆跟可可碎粒<br>焦化奶油配巧克力，濃郁但不膩，很難不喜歡的一款</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>可可費南雪｜可可豆</dd>
+              <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
       </div>
     </div>
@@ -1297,9 +1638,18 @@ footer {
         <h3 class="prod-group-title">醬糜</h3>
       </div>
       <div class="prod-grid">
-        <article class="prod-card">
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 抹抹醬糜 詳細介紹">
           <div class="prod-photo"><img src="images/抹抹醬糜.jpg" alt="Sep. 久點 抹抹醬糜 - 丸久小山園抹茶與白巧克力法國鮮奶油" loading="lazy"></div>
           <div class="prod-name">抹抹醬糜</div>
+          <div class="prod-detail" hidden>
+            <p class="prod-detail-desc">久點人氣最高的明星商品，法式凍膏的抹茶款<br>甜度不會有白巧克力的甜感，甜度較低<br>吃起來類似生巧滑順，但更有口感，退冰到微軟的狀態最好吃！</p>
+            <dl class="prod-detail-info">
+              <dt>主要組成</dt><dd>抹茶白巧克甘納許</dd>
+              <dt>完整原料</dt><dd>丸久小山園抹茶粉（若竹）、調溫白巧克力、無鹽奶油、法國鮮奶油、小農雞蛋</dd>
+              <dt>保存方式</dt><dd>冷凍 10 日</dd>
+              <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
+            </dl>
+          </div>
         </article>
       </div>
     </div>
@@ -1411,7 +1761,10 @@ footer {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-col footer-col-brand">
-        <div class="brand footer-brand">Sep<span class="dot">.</span><span class="tc">久點</span></div>
+        <div class="brand footer-brand">
+          <img src="images/LOGO.jpg" alt="Sep. 久點 DESSERT" class="footer-logo">
+          <span>Sep<span class="dot">.</span><span class="tc">久點</span></span>
+        </div>
         <p class="footer-tag">在這稍縱即逝的時光，<br>美好的事物值得滯留久一點。</p>
         <p class="footer-keywords">新北手作甜點 · 抹茶提拉盒 · 費南雪 · 軟餅乾 · 夾心司康 · 乳酪奶酥磚 · 宅配全台</p>
         <div class="footer-block">
@@ -1469,6 +1822,21 @@ footer {
     </div>
   </div>
 </footer>
+
+<!-- Product detail modal -->
+<div class="prod-modal" id="prodModal" role="dialog" aria-modal="true" aria-labelledby="prodModalName" hidden>
+  <div class="prod-modal-overlay" data-modal-close></div>
+  <div class="prod-modal-card">
+    <button class="prod-modal-close" type="button" aria-label="關閉" data-modal-close>×</button>
+    <div class="prod-modal-photo"><img id="prodModalImg" src="" alt=""></div>
+    <div class="prod-modal-body">
+      <div class="prod-modal-category" id="prodModalCategory"></div>
+      <h3 class="prod-modal-name" id="prodModalName"></h3>
+      <div class="prod-modal-desc" id="prodModalDesc"></div>
+      <dl class="prod-modal-info" id="prodModalInfo"></dl>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ---------- Order status config ---------- */
@@ -1530,6 +1898,150 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* ---------- Product detail modal ---------- */
+(function initProdModal() {
+  const modal = document.getElementById('prodModal');
+  if (!modal) return;
+  const imgEl = document.getElementById('prodModalImg');
+  const categoryEl = document.getElementById('prodModalCategory');
+  const nameEl = document.getElementById('prodModalName');
+  const descEl = document.getElementById('prodModalDesc');
+  const infoEl = document.getElementById('prodModalInfo');
+  let lastFocused = null;
+
+  function open(card) {
+    const detail = card.querySelector('.prod-detail');
+    if (!detail) return;
+    const img = card.querySelector('.prod-photo img');
+    const name = card.querySelector('.prod-name').textContent;
+    const group = card.closest('.prod-group');
+    const label = group ? group.querySelector('.prod-group-label') : null;
+    const descSrc = detail.querySelector('.prod-detail-desc');
+    const infoSrc = detail.querySelector('.prod-detail-info');
+
+    imgEl.src = img ? img.src : '';
+    imgEl.alt = img ? img.alt : '';
+    categoryEl.textContent = label ? label.textContent : '';
+    nameEl.textContent = name;
+    descEl.innerHTML = descSrc ? descSrc.innerHTML : '';
+    infoEl.innerHTML = infoSrc ? infoSrc.innerHTML : '';
+
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    modal.offsetHeight;
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    setTimeout(function() {
+      const closeBtn = modal.querySelector('.prod-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    setTimeout(function() {
+      modal.hidden = true;
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }, 300);
+  }
+
+  document.querySelectorAll('.prod-card.has-detail').forEach(function(card) {
+    card.addEventListener('click', function() { open(card); });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(card);
+      }
+    });
+  });
+
+  modal.querySelectorAll('[data-modal-close]').forEach(function(el) {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+})();
+
+/* ---------- Product category tabs ---------- */
+(function initProdTabs() {
+  const tabsContainer = document.getElementById('prodTabs');
+  const groups = document.querySelectorAll('.prod-group');
+  if (!tabsContainer || !groups.length) return;
+
+  // Auto-generate tabs from existing prod-group titles
+  groups.forEach(function(group, i) {
+    var title = group.querySelector('.prod-group-title');
+    if (!title) return;
+    var id = 'prod-cat-' + i;
+    group.id = id;
+    var tab = document.createElement('a');
+    tab.href = '#' + id;
+    tab.className = 'prod-tab';
+    tab.textContent = title.textContent;
+    tab.setAttribute('data-index', i);
+    tabsContainer.appendChild(tab);
+  });
+
+  var tabs = tabsContainer.querySelectorAll('.prod-tab');
+
+  // Click to scroll
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(tab.getAttribute('href').slice(1));
+      if (!target) return;
+      var navH = document.querySelector('.nav') ? document.querySelector('.nav').offsetHeight : 0;
+      var tabsH = tabsContainer.offsetHeight;
+      var y = target.getBoundingClientRect().top + window.pageYOffset - navH - tabsH - 20;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  // Scroll to highlight active tab
+  function updateActive() {
+    var navH = document.querySelector('.nav') ? document.querySelector('.nav').offsetHeight : 0;
+    var tabsH = tabsContainer.offsetHeight;
+    var offset = navH + tabsH + 40;
+    var activeIdx = 0;
+    groups.forEach(function(group, i) {
+      if (group.getBoundingClientRect().top <= offset) activeIdx = i;
+    });
+    tabs.forEach(function(tab, i) {
+      tab.classList.toggle('active', i === activeIdx);
+    });
+    // Auto-scroll tabs container to keep active tab visible
+    var activeTab = tabs[activeIdx];
+    if (activeTab) {
+      var tl = activeTab.offsetLeft;
+      var tw = activeTab.offsetWidth;
+      var cl = tabsContainer.scrollLeft;
+      var cw = tabsContainer.clientWidth;
+      if (tl < cl) tabsContainer.scrollTo({ left: tl - 16, behavior: 'smooth' });
+      else if (tl + tw > cl + cw) tabsContainer.scrollTo({ left: tl + tw - cw + 16, behavior: 'smooth' });
+    }
+  }
+
+  // Check if we're inside the products section before showing active state
+  var productsSection = document.getElementById('products');
+  var scrollTimer;
+  window.addEventListener('scroll', function() {
+    if (scrollTimer) return;
+    scrollTimer = requestAnimationFrame(function() {
+      scrollTimer = null;
+      var rect = productsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        updateActive();
+      }
+    });
+  });
+  updateActive();
+})();
 
 </script>
 
