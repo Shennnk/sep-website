@@ -15,6 +15,7 @@ node_modules/
 
 # 圖片備份
 images_backup/
+images/_backup/
 
 # 暫不公開的檔案
 sep-dessert-wiki.md
