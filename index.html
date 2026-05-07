@@ -2099,9 +2099,9 @@ footer {
         <p>以抹茶為核心，期待與你相遇</p>
       </div>
       <div class="story-modal-photos">
-        <img src="images/LINE_ALBUM_貼文圖片_240807_8.jpg" alt="Sep. 久點 抹茶手作甜點工作桌" loading="lazy">
-        <img src="images/S__12951566_0.jpg" alt="Sep. 久點 抹抹醬糜特寫" loading="lazy">
-        <img src="images/S__98000905_0.jpg" alt="Sep. 久點 抹茶夾心司康特寫" loading="lazy">
+        <img src="images/LINE_ALBUM_貼文圖片_240807_8.jpg" alt="Sep. 久點 抹茶手作甜點工作桌">
+        <img src="images/S__12951566_0.jpg" alt="Sep. 久點 抹抹醬糜特寫">
+        <img src="images/S__98000905_0.jpg" alt="Sep. 久點 抹茶夾心司康特寫">
       </div>
     </div>
   </div>
@@ -2245,8 +2245,8 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
         if (imgEl.src.indexOf(src) !== -1) return;
         imgEl.style.opacity = '0';
         setTimeout(function() {
+          imgEl.onload = function() { imgEl.style.opacity = '1'; };
           imgEl.src = src;
-          imgEl.style.opacity = '1';
         }, 180);
         thumbsEl.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
