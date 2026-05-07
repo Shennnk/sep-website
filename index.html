@@ -348,6 +348,45 @@ body.is-closed .nav-order-btn { display: none; }
   margin: 0;
 }
 
+/* ---------- Announcement banner ---------- */
+.announcement {
+  padding: 64px 0;
+}
+.announcement .container {
+  max-width: 100%;
+  padding: 0;
+}
+.announcement-link {
+  display: block;
+  overflow: hidden;
+  transition: opacity .3s ease;
+}
+.announcement-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-composite: source-in; /* Safari/iOS */
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+    linear-gradient(to right,  transparent 0%, black 4%, black 96%, transparent 100%);
+  mask-composite: intersect;
+}
+.announcement-link:hover,
+.announcement-link:focus-visible {
+  opacity: 0.92;
+}
+.announcement-link:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
+@media (max-width: 820px) {
+  .announcement { padding: 40px 0; }
+  .announcement .container { padding: 0; }
+}
+
 /* ---------- Section base ---------- */
 section { padding: 120px 0; position: relative; }
 @media (max-width: 820px) { section { padding: 80px 0; } }
@@ -715,6 +754,45 @@ body.is-open .prod-tabs { top: 109px; }
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity .25s ease;
+}
+.prod-modal-thumbs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1;
+  padding: 0 12px;
+}
+.prod-modal-thumbs.has-multi { display: flex; }
+.prod-modal-thumbs button {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1.5px solid rgba(244, 242, 238, 0.55);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 4px 12px rgba(26, 26, 24, 0.18);
+}
+.prod-modal-thumbs button img {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.prod-modal-thumbs button:hover {
+  transform: translateY(-1px);
+}
+.prod-modal-thumbs button.active {
+  border-color: var(--bg);
+  box-shadow: 0 0 0 2px var(--green), 0 4px 12px rgba(26, 26, 24, 0.25);
 }
 .prod-modal-body {
   padding: 56px 48px 48px;
@@ -800,6 +878,145 @@ body.is-open .prod-tabs { top: 109px; }
   transform: rotate(90deg);
 }
 body.modal-open { overflow: hidden; }
+
+/* ---------- Story modal ---------- */
+.story-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+.story-modal.open { display: flex; }
+.story-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 24, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.story-modal.open .story-modal-overlay { opacity: 1; }
+.story-modal-card {
+  position: relative;
+  background: var(--bg);
+  max-width: 760px;
+  width: 100%;
+  max-height: 88vh;
+  border-radius: 10px;
+  box-shadow: 0 28px 70px -22px rgba(26, 26, 24, 0.4);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .4s ease, transform .4s ease;
+  overflow: hidden;
+}
+.story-modal.open .story-modal-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.story-modal-body {
+  padding: 72px 64px 64px;
+  overflow-y: auto;
+  max-height: 88vh;
+}
+.story-modal-eyebrow {
+  font-family: var(--serif-en);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.story-modal-title {
+  font-family: var(--serif-tc);
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+.story-modal-title .accent {
+  font-style: italic;
+  color: var(--green);
+  display: block;
+}
+.story-modal-text p {
+  font-family: var(--serif-tc);
+  font-size: 16px;
+  line-height: 2.1;
+  color: var(--brown);
+  letter-spacing: 0.04em;
+}
+.story-modal-text p + p { margin-top: 1.8em; }
+.story-modal-text + .ing-tags { margin-top: 48px; }
+.story-modal-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-top: 48px;
+}
+.story-modal-photos img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  object-position: center 70%;
+  border-radius: 6px;
+  display: block;
+}
+.story-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(244, 242, 238, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(26, 26, 24, 0.12);
+  color: var(--black);
+  font-family: var(--serif-en);
+  font-size: 22px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .25s ease, transform .25s ease;
+  z-index: 2;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+.story-modal-close:hover {
+  background: var(--bg);
+  transform: rotate(90deg);
+}
+@media (max-width: 820px) {
+  .story-modal { padding: 0; align-items: stretch; }
+  .story-modal-card {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .story-modal-body {
+    padding: 60px 28px 48px;
+    max-height: 100vh;
+  }
+  .story-modal-title { font-size: 26px; margin-bottom: 32px; }
+  .story-modal-text p { font-size: 15px; line-height: 2; }
+  .story-modal-photos {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 36px;
+  }
+  .story-modal-photos img { aspect-ratio: 5 / 4; }
+}
 @media (max-width: 820px) {
   .prod-modal { padding: 0; align-items: stretch; }
   .prod-modal-card {
@@ -813,6 +1030,13 @@ body.modal-open { overflow: hidden; }
   .prod-modal-photo {
     aspect-ratio: 4 / 3;
     min-height: 0;
+  }
+  .prod-modal-thumbs button {
+    width: 44px;
+    height: 44px;
+  }
+  .prod-modal-thumbs {
+    bottom: 10px;
   }
   .prod-modal-body {
     padding: 32px 24px 40px;
@@ -1372,8 +1596,8 @@ footer {
     <a href="#" class="brand">Sep<span class="dot">.</span><span class="tc">久點</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#">首頁</a>
-      <a href="#story">關於久點</a>
-      <a href="#ingredients">嚴選食材</a>
+      <a href="#" data-open-story>關於久點</a>
+      <a href="#" data-open-ingredients>嚴選食材</a>
       <a href="#products">品項</a>
       <a href="#order">訂購</a>
       <a href="#contact">Contact</a>
@@ -1398,8 +1622,21 @@ footer {
   </div>
 </header>
 
-<!-- Story -->
-<section id="story">
+<!-- Announcement banner（IG 留言抽獎,5/25 23:59 截止） -->
+<section class="announcement">
+  <div class="container">
+    <a class="announcement-link"
+       href="https://www.instagram.com/p/DX6Rn2MEXsC/"
+       target="_blank"
+       rel="noopener"
+       aria-label="開啟 Sep IG 抽獎貼文">
+      <img src="images/01.jpg" alt="Sep. 久點 IG 留言抽獎進行中,5/25 23:59 截止" loading="lazy">
+    </a>
+  </div>
+</section>
+
+<!-- Story（主頁隱藏，僅供「關於久點」選單開 modal 使用） -->
+<section id="story" hidden>
   <div class="container">
     <div class="story-grid">
       <div class="story-text fade-in">
@@ -1435,17 +1672,16 @@ footer {
   </div>
 </section>
 
-<!-- Ingredients -->
-<section class="ingredients" id="ingredients">
+<!-- Ingredients（主頁隱藏，僅供「嚴選食材」選單開 modal 使用） -->
+<section class="ingredients" id="ingredients" hidden>
   <div class="container">
     <div class="fade-in">
       <div class="section-label">INGREDIENTS</div>
       <h2 class="section-title">嚴選食材</h2>
-      <p class="section-sub">從日本丸久小山園抹茶、法芙娜巧克力到小農雞蛋，每個品項背後，都是不妥協的食材選擇</p>
+      <p class="section-sub">每個品項背後，都是不妥協的食材選擇</p>
     </div>
     <div class="ing-tags fade-in">
-      <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 龍膽抹茶</span></div>
-      <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 若竹抹茶</span></div>
+      <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 抹茶</span></div>
       <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 焙茶</span></div>
       <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">日本上白糖</span></div>
       <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">日本麵粉</span></div>
@@ -1483,9 +1719,11 @@ footer {
         <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 抹脆提拉盒 詳細介紹">
           <div class="prod-photo"><img src="images/抹脆提拉盒.jpg" alt="Sep. 久點 抹脆提拉盒 - 抹茶脆脆與若竹馬斯卡邦奶餡" loading="lazy"></div>
           <div class="prod-name">抹脆提拉盒</div>
-          <div class="prod-detail" hidden>
+          <div class="prod-detail" data-images="images/抹脆提拉盒.jpg,images/抹脆提拉盒-1.jpg" hidden>
             <p class="prod-detail-desc">久點甜度最低的濃抹茶提拉米蘇<br>奶餡使用小山園若竹抹茶製的馬斯卡邦<br>搭配自製抹茶液手指餅乾，上方附抹茶脆脆<br><br>一口三種層次，從脆到綿，茶味從頭貫穿到底。</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 240</dd>
+              <dt>規格</dt><dd>200ml</dd>
               <dt>主要組成</dt><dd>手指餅乾｜抹茶馬斯卡邦奶餡｜抹茶脆脆</dd>
               <dt>完整原料</dt><dd>自製手指餅乾、法國鮮奶油、日本上白糖、法國馬斯卡邦乳酪、丸久小山園抹茶粉（若竹、龍膽）、抹茶脆脆</dd>
               <dt>保存方式</dt><dd>冷凍 7 日</dd>
@@ -1496,11 +1734,28 @@ footer {
         <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 酒香雙脆提拉盒 詳細介紹">
           <div class="prod-photo"><img src="images/濃酒脆球提拉盒.jpg" alt="Sep. 久點 酒香雙脆提拉盒 - 咖啡蘭姆酒提拉米蘇與巧克脆球" loading="lazy"></div>
           <div class="prod-name">酒香雙脆提拉盒</div>
-          <div class="prod-detail" hidden>
+          <div class="prod-detail" data-images="images/濃酒脆球提拉盒.jpg,images/濃酒脆球提拉盒-1.jpg" hidden>
             <p class="prod-detail-desc">不只是提拉米蘇，是加了蘭姆酒的濃酒提拉米蘇<br>手指餅乾使用咖啡蘭姆酒液浸過<br>添加香草籽的酒香奶餡<br><br>從奶餡到餅乾底，酒香環繞<br>喜歡大人感甜點的人應該會喜歡。</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 190</dd>
+              <dt>規格</dt><dd>200ml</dd>
               <dt>主要組成</dt><dd>手指餅乾｜咖啡蘭姆奶餡｜巧克脆球、可可碎粒</dd>
               <dt>完整原料</dt><dd>自製手指餅乾、咖啡濃縮液、麥斯蘭姆酒、法國馬斯卡邦乳酪、法國鮮奶油、日本上白糖、香草、雞蛋、巧克力脆球、可可脆粒、可可粉</dd>
+              <dt>保存方式</dt><dd>冷凍 7 日</dd>
+              <dt>食用方式</dt><dd>食用前一日放冷藏，當天即可食用</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 抹雙藏玉提拉盒 詳細介紹">
+          <div class="prod-photo"><img src="images/抹雙藏玉提拉盒.jpg" alt="Sep. 久點 抹雙藏玉提拉盒 - 白玉麻糬與抹茶馬斯卡邦奶餡" loading="lazy"></div>
+          <div class="prod-name">抹雙藏玉提拉盒</div>
+          <div class="prod-detail" data-category="提拉盒｜QQ 系列" data-images="images/抹雙藏玉提拉盒.jpg,images/抹雙藏玉提拉盒-1.jpg" hidden>
+            <p class="prod-detail-desc">把白玉麻糬，藏進抹茶提拉米蘇裡<br>上下兩層白玉夾住兩層抹茶奶餡<br>頂端撒抹茶酥粒與黑糖酥粒，雙重酥脆<br><br>一口下去先酥、再綿、最後 Q<br>給喜歡抹茶，不同於以往的新口感</p>
+            <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 280</dd>
+              <dt>規格</dt><dd>200ml</dd>
+              <dt>主要組成</dt><dd>白玉麻糬｜抹茶馬斯卡邦奶餡｜抹茶酥粒、黑糖酥粒</dd>
+              <dt>完整原料</dt><dd>白玉麻糬（糯米粉、上白糖）、法國馬斯卡邦乳酪、法國鮮奶油、日本上白糖、丸久小山園若竹抹茶粉、抹茶酥粒、黑糖酥粒</dd>
               <dt>保存方式</dt><dd>冷凍 7 日</dd>
               <dt>食用方式</dt><dd>食用前一日放冷藏，當天即可食用</dd>
             </dl>
@@ -1530,6 +1785,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">久點受歡迎的軟餅乾款<br>用小山園龍膽抹茶做的軟餅乾，擠入若竹抹茶甘納許<br>最上方加了抹茶巧克方粒<br><br>從外層吃到中心都是抹茶，甜度屬於適中<br>是不少顧客會囤貨的品項！</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 120</dd>
               <dt>主要組成</dt><dd>抹茶軟餅乾｜抹茶甘納許｜抹茶巧克方粒</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
@@ -1542,6 +1798,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">焙茶比抹茶溫潤，很耐吃的一款<br>焙茶軟餅乾夾焙茶甘納許，搭配上方的玄米粒<br>咬下去有穀物香，甘甜不膩。</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 115</dd>
               <dt>主要組成</dt><dd>焙茶軟餅乾｜焙茶甘納許｜玄米粒</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
@@ -1554,6 +1811,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">喜歡苦甜巧克力的人，這款不會讓你失望<br>可可軟餅乾填入可可甘納許，搭配可可碎粒、可可球<br>可可含量高，苦甜控會喜歡的！</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 110</dd>
               <dt>主要組成</dt><dd>可可軟餅乾｜可可甘納許｜可可碎粒、可可球</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
@@ -1566,6 +1824,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">一點海鹽，讓可可的層次更立體<br>可可軟餅乾夾可可甘納許，撒上海鹽<br>不甜膩，吃完嘴裡還有一點鹹香留著。</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 110</dd>
               <dt>主要組成</dt><dd>可可軟餅乾｜72% 巧克甘納許｜法國鹽之花</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
@@ -1578,6 +1837,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">屬於堅果軟餅乾<br>濃郁紅玉紅茶軟餅乾，拌入杏仁果跟可可豆<br>茶香裡帶著濃郁堅果，口感上非常有層次。</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 100</dd>
               <dt>主要組成</dt><dd>紅玉紅茶軟餅乾｜杏仁果｜可可豆</dd>
               <dt>完整原料</dt><dd>中低筋麵粉、無鋁泡打粉、上白糖、無鹽奶油、雞蛋、紅玉紅茶粉、杏仁果、可可豆</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
@@ -1600,6 +1860,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">常溫法式費南雪，使用小山園抹茶製作<br>外殼焦香、內餡濕潤，抹茶味厚實、濃郁</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 70</dd>
               <dt>主要組成</dt><dd>抹茶費南雪｜抹茶方粒</dd>
               <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
@@ -1612,19 +1873,21 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">費南雪裡比較特別的一款<br>焦化奶油搭貴妃烏龍茶粉，帶有蜜桃、荔枝的清新香氣</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 65</dd>
               <dt>主要組成</dt><dd>貴妃烏龍費南雪｜脆片</dd>
               <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
             </dl>
           </div>
         </article>
-        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 可可費南雪 詳細介紹">
-          <div class="prod-photo"><img src="images/可可費南雪.jpg" alt="Sep. 久點 可可費南雪 - 可可粉與焦化奶油杏仁粉" loading="lazy"></div>
-          <div class="prod-name">可可費南雪</div>
+        <article class="prod-card has-detail" tabindex="0" role="button" aria-label="查看 法芙娜可可費南雪 詳細介紹">
+          <div class="prod-photo"><img src="images/法芙娜可可費南雪.jpg" alt="Sep. 久點 法芙娜可可費南雪 - 法芙娜可可粉與焦化奶油杏仁粉" loading="lazy"></div>
+          <div class="prod-name">法芙娜可可費南雪</div>
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">法芙娜可可粉製的費南雪<br>外殼焦香、內餡濕潤，上方有巧克力豆跟可可碎粒<br>焦化奶油配巧克力，濃郁但不膩，很難不喜歡的一款</p>
             <dl class="prod-detail-info">
-              <dt>主要組成</dt><dd>可可費南雪｜可可豆</dd>
+              <dt>價格</dt><dd>NT$ 60</dd>
+              <dt>主要組成</dt><dd>法芙娜可可費南雪｜可可豆</dd>
               <dt>保存方式</dt><dd>常溫 3 日 / 冷凍 10 日</dd>
               <dt>食用方式</dt><dd>常溫解凍 30 分鐘後食用</dd>
             </dl>
@@ -1645,6 +1908,7 @@ footer {
           <div class="prod-detail" hidden>
             <p class="prod-detail-desc">久點人氣最高的明星商品，法式凍膏的抹茶款<br>甜度不會有白巧克力的甜感，甜度較低<br>吃起來類似生巧滑順，但更有口感，退冰到微軟的狀態最好吃！</p>
             <dl class="prod-detail-info">
+              <dt>價格</dt><dd>NT$ 115</dd>
               <dt>主要組成</dt><dd>抹茶白巧克甘納許</dd>
               <dt>完整原料</dt><dd>丸久小山園抹茶粉（若竹）、調溫白巧克力、無鹽奶油、法國鮮奶油、小農雞蛋</dd>
               <dt>保存方式</dt><dd>冷凍 10 日</dd>
@@ -1688,15 +1952,10 @@ footer {
     <div class="order-actions fade-in">
       <div class="order-actions-open">
         <div class="order-form-buttons">
-          <a id="pickupBtn" class="order-form-btn" href="#" target="_blank" rel="noopener">
-            <div class="order-form-btn-eyebrow">Pickup</div>
+          <a id="orderBtn" class="order-form-btn" href="#" target="_blank" rel="noopener">
+            <div class="order-form-btn-eyebrow">Order</div>
             <div class="order-form-btn-divider"></div>
-            <div class="order-form-btn-label">面交訂購表單</div>
-          </a>
-          <a id="deliveryBtn" class="order-form-btn" href="#" target="_blank" rel="noopener">
-            <div class="order-form-btn-eyebrow">Delivery</div>
-            <div class="order-form-btn-divider"></div>
-            <div class="order-form-btn-label">宅配訂購表單</div>
+            <div class="order-form-btn-label">線上訂購表單</div>
           </a>
         </div>
       </div>
@@ -1825,11 +2084,68 @@ footer {
 </footer>
 
 <!-- Product detail modal -->
+<!-- Story modal（從選單「關於久點」打開） -->
+<div class="story-modal" id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyModalTitle" hidden>
+  <div class="story-modal-overlay" data-story-close></div>
+  <div class="story-modal-card">
+    <button class="story-modal-close" type="button" aria-label="關閉" data-story-close>×</button>
+    <div class="story-modal-body">
+      <div class="story-modal-eyebrow">BRAND STORY</div>
+      <h2 class="story-modal-title" id="storyModalTitle">
+        喜歡的事<br>
+        <span class="accent">剛好是茶、是甜點</span>
+      </h2>
+      <div class="story-modal-text">
+        <p>久點的開始很簡單——</p>
+        <p>從喜歡烘焙開始<br>到想把這份喜歡，遞給你</p>
+        <p>如果連自己都很喜歡<br>才值得讓你嚐嚐看<br>每一次開單，都滿心期待</p>
+        <p>以抹茶為核心，期待與你相遇</p>
+      </div>
+      <div class="story-modal-photos">
+        <img src="images/LINE_ALBUM_貼文圖片_240807_8.jpg" alt="Sep. 久點 抹茶手作甜點工作桌" loading="lazy">
+        <img src="images/S__12951566_0.jpg" alt="Sep. 久點 抹抹醬糜特寫" loading="lazy">
+        <img src="images/S__98000905_0.jpg" alt="Sep. 久點 抹茶夾心司康特寫" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ingredients modal（從選單「嚴選食材」打開） -->
+<div class="story-modal" id="ingredientsModal" role="dialog" aria-modal="true" aria-labelledby="ingredientsModalTitle" hidden>
+  <div class="story-modal-overlay" data-ingredients-close></div>
+  <div class="story-modal-card">
+    <button class="story-modal-close" type="button" aria-label="關閉" data-ingredients-close>×</button>
+    <div class="story-modal-body">
+      <div class="story-modal-eyebrow">INGREDIENTS</div>
+      <h2 class="story-modal-title" id="ingredientsModalTitle">嚴選食材</h2>
+      <div class="story-modal-text">
+        <p>每個品項背後，都是不妥協的食材選擇</p>
+      </div>
+      <div class="ing-tags">
+        <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 抹茶</span></div>
+        <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">丸久小山園 焙茶</span></div>
+        <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">日本上白糖</span></div>
+        <div class="ing-tag"><span class="ing-origin">JAPAN</span><span class="ing-name">日本麵粉</span></div>
+        <div class="ing-tag"><span class="ing-origin">TAIWAN</span><span class="ing-name">滴滴香茶粉</span></div>
+        <div class="ing-tag"><span class="ing-origin">TAIWAN</span><span class="ing-name">小農雞蛋</span></div>
+        <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法芙娜巧克力</span></div>
+        <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法國馬斯卡邦</span></div>
+        <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">法國鮮奶油</span></div>
+        <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">可可巴瑞巧克力</span></div>
+        <div class="ing-tag"><span class="ing-origin">FRANCE</span><span class="ing-name">貝可拉巧克力</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="prod-modal" id="prodModal" role="dialog" aria-modal="true" aria-labelledby="prodModalName" hidden>
   <div class="prod-modal-overlay" data-modal-close></div>
   <div class="prod-modal-card">
     <button class="prod-modal-close" type="button" aria-label="關閉" data-modal-close>×</button>
-    <div class="prod-modal-photo"><img id="prodModalImg" src="" alt=""></div>
+    <div class="prod-modal-photo">
+      <img id="prodModalImg" src="" alt="">
+      <div class="prod-modal-thumbs" id="prodModalThumbs" aria-label="商品照片切換"></div>
+    </div>
     <div class="prod-modal-body">
       <div class="prod-modal-category" id="prodModalCategory"></div>
       <h3 class="prod-modal-name" id="prodModalName"></h3>
@@ -1842,11 +2158,10 @@ footer {
 <script>
 /* ---------- Order status config ---------- */
 // ↓ 開單改 "open"、關單改 "closed"，這是每次唯一要動的地方
-const ORDER_STATUS = "closed";
+const ORDER_STATUS = "open";
 
-// ↓ 兩個訂購表單連結（第一次填好之後就不用再動）
-const ORDER_LINK_PICKUP   = "https://forms.gle/PICKUP_FORM_PLACEHOLDER";
-const ORDER_LINK_DELIVERY = "https://forms.gle/DELIVERY_FORM_PLACEHOLDER";
+// ↓ 訂購表單連結（合一表單，裡面讓客人選面交/宅配）
+const ORDER_LINK = "https://forms.gle/ubfjdF8mFsd8UwFZ7";
 
 // ↓ LINE 官方帳號（詢問用）
 const LINE_OA_LINK = "https://line.me/R/ti/p/%40749hhrfk";
@@ -1860,8 +2175,7 @@ const LINE_OA_LINK = "https://line.me/R/ti/p/%40749hhrfk";
     navBtn.href = "#order";
     navBtn.removeAttribute('target');
     navBtn.removeAttribute('rel');
-    document.getElementById('pickupBtn').href = ORDER_LINK_PICKUP;
-    document.getElementById('deliveryBtn').href = ORDER_LINK_DELIVERY;
+    document.getElementById('orderBtn').href = ORDER_LINK;
   } else {
     document.body.classList.add('is-closed');
   }
@@ -1905,11 +2219,44 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
   const modal = document.getElementById('prodModal');
   if (!modal) return;
   const imgEl = document.getElementById('prodModalImg');
+  const thumbsEl = document.getElementById('prodModalThumbs');
   const categoryEl = document.getElementById('prodModalCategory');
   const nameEl = document.getElementById('prodModalName');
   const descEl = document.getElementById('prodModalDesc');
   const infoEl = document.getElementById('prodModalInfo');
   let lastFocused = null;
+
+  function buildThumbs(images, mainAlt) {
+    thumbsEl.innerHTML = '';
+    if (!images || images.length < 2) {
+      thumbsEl.classList.remove('has-multi');
+      return;
+    }
+    thumbsEl.classList.add('has-multi');
+    images.forEach(function(src, i) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', '查看第 ' + (i + 1) + ' 張照片');
+      if (i === 0) btn.classList.add('active');
+      const tImg = document.createElement('img');
+      tImg.src = src;
+      tImg.alt = mainAlt + ' 縮圖 ' + (i + 1);
+      tImg.loading = 'lazy';
+      btn.appendChild(tImg);
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (imgEl.src.indexOf(src) !== -1) return;
+        imgEl.style.opacity = '0';
+        setTimeout(function() {
+          imgEl.src = src;
+          imgEl.style.opacity = '1';
+        }, 180);
+        thumbsEl.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+      });
+      thumbsEl.appendChild(btn);
+    });
+  }
 
   function open(card) {
     const detail = card.querySelector('.prod-detail');
@@ -1921,9 +2268,23 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
     const descSrc = detail.querySelector('.prod-detail-desc');
     const infoSrc = detail.querySelector('.prod-detail-info');
 
-    imgEl.src = img ? img.src : '';
-    imgEl.alt = img ? img.alt : '';
-    categoryEl.textContent = label ? label.textContent : '';
+    // Category：data-category 優先，沒設就用 group label
+    const customCategory = detail.getAttribute('data-category');
+    categoryEl.textContent = customCategory || (label ? label.textContent : '');
+
+    // 多圖：data-images 為逗號分隔清單，沒設就只用主圖
+    const imagesAttr = detail.getAttribute('data-images');
+    let images = [];
+    if (imagesAttr) {
+      images = imagesAttr.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+    }
+    const mainSrc = images[0] || (img ? img.src : '');
+    const mainAlt = img ? img.alt : name;
+    imgEl.style.opacity = '1';
+    imgEl.src = mainSrc;
+    imgEl.alt = mainAlt;
+    buildThumbs(images, mainAlt);
+
     nameEl.textContent = name;
     descEl.innerHTML = descSrc ? descSrc.innerHTML : '';
     infoEl.innerHTML = infoSrc ? infoSrc.innerHTML : '';
@@ -1961,6 +2322,96 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
   });
 
   modal.querySelectorAll('[data-modal-close]').forEach(function(el) {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+})();
+
+/* ---------- Story modal ---------- */
+(function initStoryModal() {
+  const modal = document.getElementById('storyModal');
+  if (!modal) return;
+  let lastFocused = null;
+
+  function open() {
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    modal.offsetHeight;
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    setTimeout(function() {
+      const closeBtn = modal.querySelector('.story-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    setTimeout(function() {
+      modal.hidden = true;
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }, 350);
+  }
+
+  document.querySelectorAll('[data-open-story]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      open();
+    });
+  });
+
+  modal.querySelectorAll('[data-story-close]').forEach(function(el) {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+})();
+
+/* ---------- Ingredients modal ---------- */
+(function initIngredientsModal() {
+  const modal = document.getElementById('ingredientsModal');
+  if (!modal) return;
+  let lastFocused = null;
+
+  function open() {
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    modal.offsetHeight;
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    setTimeout(function() {
+      const closeBtn = modal.querySelector('.story-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 50);
+  }
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    setTimeout(function() {
+      modal.hidden = true;
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }, 350);
+  }
+
+  document.querySelectorAll('[data-open-ingredients]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      open();
+    });
+  });
+
+  modal.querySelectorAll('[data-ingredients-close]').forEach(function(el) {
     el.addEventListener('click', close);
   });
 
